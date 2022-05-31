@@ -29,8 +29,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeExchange(exchange -> exchange
                         .pathMatchers("/actuator/**").permitAll()
                         .pathMatchers(HttpMethod.GET, "/event/events/**").permitAll()
-                        .pathMatchers("/event/locations/add_location").hasAuthority("SCOPE_jevents-office")
+                        .pathMatchers(HttpMethod.GET, "/event/files/**").permitAll()
+                        .pathMatchers(HttpMethod.GET, "/event/locations/**").permitAll()
+                        .pathMatchers(HttpMethod.POST,"/event/locations/add_location").hasAuthority("SCOPE_jevents-office")
                         .pathMatchers("/event/office/**").hasAuthority("SCOPE_jevents-office")
+                        .pathMatchers("/event/admin/**").hasAuthority("SCOPE_jevents-admin")
                         .pathMatchers("/token").hasAuthority("SCOPE_jevents-office")
                         .anyExchange().authenticated()
                 )
