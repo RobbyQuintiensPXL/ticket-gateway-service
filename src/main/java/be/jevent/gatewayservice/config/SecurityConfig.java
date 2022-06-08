@@ -32,6 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .pathMatchers(HttpMethod.GET, "/event/files/**").permitAll()
                         .pathMatchers(HttpMethod.GET, "/event/locations/**").permitAll()
                         .pathMatchers(HttpMethod.POST,"/event/locations/add_location").hasAuthority("SCOPE_jevents-office")
+                        .pathMatchers(HttpMethod.GET, "/ticket/tickets/validate/**").permitAll()
                         .pathMatchers("/event/office/**").hasAuthority("SCOPE_jevents-office")
                         .pathMatchers("/event/admin/**").hasAuthority("SCOPE_jevents-admin")
                         .pathMatchers("/token").hasAuthority("SCOPE_jevents-office")
